@@ -1,0 +1,6 @@
+<launch>
+  <node name="IMUinv_marker_estimation" pkg="useful_info" type="camera_IMUinv_marker" />
+  <node name="orientation_estimation" pkg="useful_info" type="imu_integration_estimation_publisher" />
+  <node name="ground_truth_listener" pkg="useful_info" type="ground_truth" />
+  <node pkg="useful_info" type="IMU_publisher" name="imu_adaptor"/>
+</launch>

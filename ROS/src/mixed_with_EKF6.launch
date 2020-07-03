@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="useful_info" type="camera_mixed_with_EKF6" name="pub_camera_estimation"/>
+  <node pkg="useful_info" type="IMU_publisher" name="imu_adaptor"/>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find useful_info)/params_mixed_with_EKF6.yaml" />
+  </node>
+  <node pkg="useful_info" type="EKF_receiver" name="EKF_adaptor"/>
+</launch>

@@ -1,0 +1,4 @@
+<launch>
+  <node name="IMUinv_magnetometer_marker_estimation" pkg="useful_info" type="camera_IMUinv_magnetometer_marker" />
+  <node name="ground_truth_listener" pkg="useful_info" type="ground_truth" />
+</launch>

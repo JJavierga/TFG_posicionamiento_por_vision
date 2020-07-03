@@ -1,0 +1,4 @@
+<launch>
+  <node name="pure_marker_estimation" pkg="useful_info" type="camera_pure_marker" />
+  <node name="ground_truth_listener" pkg="useful_info" type="ground_truth" />
+</launch>

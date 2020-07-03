@@ -1,0 +1,319 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="vrc_task_1">
+    <!-- place user camera -->
+    <gui>
+      <!--<camera name="user_camera">
+        <pose>-21.660200 -11.942800 14.053900 0.000000 0.443643 0.352194</pose>
+      </camera>-->
+      
+      <camera name="user_camera">
+        <pose>-30 -16 12 0.000000 0.21 0.352194</pose>
+      </camera>
+      
+      <!--
+      <camera name="map_camera">
+        <pose>0 0 400 0 1.5707 0</pose>-->
+        <!-- The ortho feature has been added to Gazebo on april 2015
+             it is not yet present on ROS' Gazebo version.
+        <projection_type>orthographic</projection_type>-->
+      <!--</camera>-->
+      
+    </gui>
+    <scene>
+      <ambient>0.4 0.4 0.4 1.0</ambient>
+      <grid>true</grid>
+      <sky>
+        <clouds>
+          <speed>10</speed>
+        </clouds>
+      </sky>
+    </scene>
+    <physics type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <use_dynamic_moi_rescaling>true</use_dynamic_moi_rescaling>
+          <type>quick</type>
+          <iters>50</iters>
+	  <!-- Must be 1.0 ! Not any above number -->
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100.0</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+
+    <!-- Light Source -->
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 100 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.9 0.9 0.9 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.2 0.2 -0.9</direction>
+    </light>
+    
+    <!--
+    <light type="point" name="light_bulb">
+      <cast_shadows>false</cast_shadows>
+      <pose>-14 0 5 0 0 0</pose>
+      <diffuse>0.3 0.3 0.3 1</diffuse>
+      <specular>0.0 0.0 0.0 1</specular>
+      <attenuation>
+        <range>80</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+    -->
+    
+    <!--
+    <light type="spot" name="lamp_post_light">
+      <cast_shadows>true</cast_shadows>
+      <pose>-3.01 -1.7 3.01   0.22 0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.0 0.0 0.0 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0 0.3 -0.9</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>1.0</outer_angle>
+        <falloff>1.0</falloff>
+      </spot> 
+    </light>
+    -->
+    
+
+    <include>
+      <uri>model://grass_plane_small</uri>
+    </include>
+
+    <!--
+    <include>
+      <uri>model://grass_plane</uri>
+    </include>
+    
+    
+    <include>
+      <uri>model://ground_plane_small</uri>
+    </include>
+    -->
+   
+    <include>
+      <uri>model://playfield_heightmap_1</uri>
+    </include>
+     
+    <include>
+      <name>CentralMarker</name>
+      <uri>model://arucoMarker23</uri>
+      <pose>0 -0.25 0   0 0 -1.5707</pose>
+    </include>
+
+
+	<!-- Para varios marcadores a 1.5m -->
+
+    <include>
+      <name>ForwardMarker2</name>
+      <uri>model://arucoMarker2</uri>
+      <pose>1.5 -0.25 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>ForwardMarker4</name>
+      <uri>model://arucoMarker4</uri>
+      <pose>3 -0.25 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>BackwardMarker6</name>
+      <uri>model://arucoMarker6</uri>
+      <pose>-1.5 -0.25 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>BackwardMarker8</name>
+      <uri>model://arucoMarker8</uri>
+      <pose>-3 -0.25 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>LeftMarker1</name>
+      <uri>model://arucoMarker1</uri>
+      <pose>0 1.25 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>LeftMarker3</name>
+      <uri>model://arucoMarker3</uri>
+      <pose>0 2.75 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>RightMarker5</name>
+      <uri>model://arucoMarker5</uri>
+      <pose>0 -1.75 0   0 0 -1.5707</pose>
+    </include>
+
+    <include>
+      <name>RightMarker7</name>
+      <uri>model://arucoMarker7</uri>
+      <pose>0 -3.25 0   0 0 -1.5707</pose>
+    </include>
+
+	<!-- Fin varios marcadores -->
+
+    <include>
+      <name>bowl</name>
+      <uri>model://bowl</uri>
+      <pose>-3 3 0   0 0 0</pose>
+    </include>
+<!--
+    <include>
+      <name>checkboard_plane</name>
+      <uri>model://checkboard_plane</uri>
+      <pose>1.63 4.69 0.1   0 0 0</pose>
+    </include>
+-->
+    <include>
+      <name>coke_can</name>
+      <uri>model://coke_can</uri>
+      <pose>1 1 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>cricket_ball</name>
+      <uri>model://cricket_ball</uri>
+      <pose>2.8 1.4 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>disk_part</name>
+      <uri>model://disk_part</uri>
+      <pose>-3 -3 0  0 0 0</pose>
+    </include>
+<!--
+    <include>
+      <name>door_handle/name>
+      <uri>model://door_handle</uri>
+      <pose>6.6 1.6 0  0 0 0</pose>
+    </include>    
+-->
+    <include>
+      <name>euro_pallet</name>
+      <uri>model://euro_pallet</uri>
+      <pose>4.8 4.6 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>gear_part</name>
+      <uri>model://gear_part</uri>
+      <pose>4.4 -2.8 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>hammer</name>
+      <uri>model://hammer</uri>
+      <pose>7.14 -0.9 0  0 0 0</pose>
+    </include>
+<!--
+    <include>
+      <name>kinect</name>
+      <uri>model://kinect</uri>
+      <pose>1.6 4 0 0 0</pose>
+    </include>
+-->
+    <include>
+      <name>metal_peg_board</name>
+      <uri>model://metal_peg_board</uri>
+      <pose>3 -3 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>parrot_bebop_2</name>
+      <uri>model://parrot_bebop_2</uri>
+      <pose>-5 -3 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>plastic_cup</name>
+      <uri>model://plastic_cup</uri>
+      <pose>-1.7 0.7 0  0 0 0</pose>
+    </include>
+
+    <include>
+      <name>saucepan</name>
+      <uri>model://saucepan</uri>
+      <pose>-2.8 1.18 0  0 0 0</pose>
+    </include>
+
+    <!-- Roads & Garage ways -->
+    <road name="main_street">
+      <width>4</width>
+      <point>-19    14   0.01</point>
+      <point>-19    3    0.01</point>
+      <point>-18.77 1.85 0.01</point>
+      <point>-18.12 0.88 0.01</point>
+      <point>-17.15 0.23 0.01</point>
+      <point>-16    0    0.01</point>
+      
+      <point>10 0 0.01</point>
+      <point>11.15 -0.23 0.01</point>
+      <point>12.12 -0.88 0.01</point>
+      <point>12.77 -1.85 0.01</point>
+      <point>13    -3    0.01</point>
+      <point>13    -14   0.01</point>
+    </road>
+        
+   <!-- <include>
+      <name>recorder_camera</name>
+      <uri>model://recorder_camera</uri>
+      <pose>-1 -3.08 3.0  0 0 -1.89</pose>
+    </include>
+-->
+ <!--   <road name="garage_way_1">
+      <width>1.75</width>
+      <point>1.75 -2 0.01</point>
+      <point>1.75 -6 0.01</point>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+    <road name="garage_way_2">
+      <width>2.5</width>
+      <point>-12.5 -2 0.01</point>
+      <point>-12.5 -8 0.01</point>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    -->
+    <plugin name="ardupilot_sitl_gazebo_plugin" filename="libardupilot_sitl_gazebo_plugin.so">
+    <UAV_MODEL>erlecopter</UAV_MODEL>
+    </plugin>
+  </world>
+</sdf>

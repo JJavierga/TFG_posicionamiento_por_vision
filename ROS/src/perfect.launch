@@ -1,0 +1,4 @@
+<launch>
+  <node name="camera_mixed_estimator" pkg="useful_info" type="camera_perfect" />
+  <node name="ground_truth_listener" pkg="useful_info" type="ground_truth" />
+</launch>
