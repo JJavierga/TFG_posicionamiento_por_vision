@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="ArucoMarker">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 0.1 0 -1.57079632679 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://arucoMarker23/meshes/ArucoMarker23.dae</uri>
+          <scale>1 1 1</scale></mesh>
+        </geometry>
+      </visual>
+    </link>
+    <plugin name="mark_driver" filename="libmark_plugin.so">
+      <shape>circle</shape>
+    </plugin>
+  </model>
+</sdf>
